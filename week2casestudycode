@@ -1,0 +1,32 @@
+# Rhiannon King
+# Description: This app accepts student names and GPAs and determines
+#              whether each student qualifies for the Dean's List
+#              or the Honor Roll.
+
+while True:
+    # Ask for the student's last name
+    last_name = input("Enter the student's last name (or ZZZ to quit): ")
+
+    # Stop processing if the user enters ZZZ
+    if last_name == "ZZZ":
+        break
+
+    # Ask for the student's first name
+    first_name = input("Enter the student's first name: ")
+
+    # Ask for the student's GPA
+    gpa = float(input("Enter the student's GPA: "))
+
+    # Check if the student qualifies for the Dean's List
+    if gpa >= 3.5:
+        print(first_name, last_name, "has made the Dean's List.")
+
+    # Check if the student qualifies for the Honor Roll
+    elif gpa >= 3.25:
+        print(first_name, last_name, "has made the Honor Roll.")
+
+    # Student does not qualify for either
+    else:
+        print(first_name, last_name, "does not qualify for the Dean's List or Honor Roll.")
+
+    print()
