@@ -7,7 +7,8 @@ class InventoryManager:
             "Pork": TamaleProduct("Pork", 2.50, 100),
             "Chicken": TamaleProduct("Chicken", 2.50, 100),
             "Cheese": TamaleProduct("Cheese", 2.75, 80),
-            "Sweet": TamaleProduct("Sweet", 3.00, 60)
+            "Sweet": TamaleProduct("Sweet", 3.00, 60),
+            "Bean": TamaleProduct("Bean", 2.25, 75),
         }
 
     def get_product(self, name):
@@ -17,7 +18,10 @@ class InventoryManager:
         return list(self.products.keys())
 
     def get_inventory_summary(self):
-        summary = "Current Inventory:\n"
+        summary = "Current Inventory\n"
+        summary += "-----------------\n"
+
         for product in self.products.values():
-            summary += f"{product.name}: {product.quantity} available\n"
+            summary += f"{product.name}: {product.quantity} available at ${product.price:.2f} each\n"
+
         return summary

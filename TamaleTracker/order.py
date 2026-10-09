@@ -11,16 +11,21 @@ class Order:
 
     def calculate_total(self):
         total = 0
+
         for name, quantity, price in self.items:
             total += quantity * price
+
         return total
 
     def get_summary(self):
-        summary = f"Customer: {self.customer.get_info()}\n\n"
-        summary += "Order Items:\n"
+        summary = "Order Summary\n"
+        summary += "-------------\n"
+        summary += f"Customer: {self.customer.get_info()}\n\n"
+        summary += "Items:\n"
 
         for name, quantity, price in self.items:
-            summary += f"{name}: {quantity} x ${price:.2f} = ${quantity * price:.2f}\n"
+            line_total = quantity * price
+            summary += f"{name}: {quantity} x ${price:.2f} = ${line_total:.2f}\n"
 
         summary += f"\nTotal: ${self.calculate_total():.2f}"
         return summary

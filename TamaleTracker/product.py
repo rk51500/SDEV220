@@ -11,4 +11,8 @@ class TamaleProduct:
         return False
 
     def restock(self, amount):
-        self.quantity += amount
+        if amount > 0:
+            self.quantity += amount
+
+    def get_display_text(self):
+        return f"{self.name} - ${self.price:.2f} ({self.quantity} available)"
