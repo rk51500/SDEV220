@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 32px auto;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #d9e0e7;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        form {
+            display: grid;
+            gap: 18px;
+        }
+
+        label,
+        legend {
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select,
+        textarea {
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 6px;
+            padding: 10px;
+            border: 1px solid #aeb8c2;
+            border-radius: 4px;
+            font: inherit;
+        }
+
+        textarea {
+            min-height: 110px;
+            resize: vertical;
+        }
+
+        fieldset {
+            border: 1px solid #d1d8df;
+            border-radius: 6px;
+            padding: 14px;
+        }
+
+        .option-list {
+            display: grid;
+            gap: 8px;
+            margin-top: 8px;
+        }
+
+        .error {
+            margin: 6px 0 0;
+            color: #b00020;
+            font-weight: bold;
+        }
+
+        button {
+            justify-self: start;
+            padding: 10px 18px;
+            border: 0;
+            border-radius: 4px;
+            background: #2457a6;
+            color: #fff;
+            font: inherit;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #1b4380;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Student Registration Form</h1>
+
+        <form method="post">
+            {% csrf_token %}
+
+            <div>
+                <label for="student_name">Student Name</label>
+                <input type="text" id="student_name" name="student_name" value="{{ form_data.student_name }}">
+                {% if errors.student_name %}
+                    <p class="error">{{ errors.student_name }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="student_id">Student ID</label>
+                <input type="text" id="student_id" name="student_id" value="{{ form_data.student_id }}">
+                {% if errors.student_id %}
+                    <p class="error">{{ errors.student_id }}</p>
+                {% endif %}
+            </div>
+
+            <div>
+                <label for="major">Major</label>
+                <select id="major" name="major">
+                    {% for major in majors %}
+                        <option value="{{ major }}" {% if form_data.major == major %}selected{% endif %}>{{ major }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <fieldset>
+                <legend>Class Standing</legend>
+                <div class="option-list">
+                    {% for standing in class_standings %}
+                        <label>
+                            <input type="radio" name="class_standing" value="{{ standing }}" {% if form_data.class_standing == standing %}checked{% endif %}>
+                            {{ standing }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            <fieldset>
+                <legend>Programming Languages Known</legend>
+                <div class="option-list">
+                    {% for language in programming_languages %}
+                        <label>
+                            <input type="checkbox" name="programming_languages" value="{{ language }}" {% if language in form_data.programming_languages %}checked{% endif %}>
+                            {{ language }}
+                        </label>
+                    {% endfor %}
+                </div>
+            </fieldset>
+
+            <div>
+                <label for="graduation_year">Expected Graduation Year</label>
+                <input type="number" id="graduation_year" name="graduation_year" min="2026" max="2100" value="{{ form_data.graduation_year }}">
+            </div>
+
+            <div>
+                <label for="comments">Comments</label>
+                <textarea id="comments" name="comments">{{ form_data.comments }}</textarea>
+            </div>
+
+            <button type="submit">Submit</button>
+        </form>
+    </main>
+</body>
+</html>

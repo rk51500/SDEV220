@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Summary</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background: #f4f6f8;
+            color: #222;
+        }
+
+        main {
+            max-width: 760px;
+            margin: 32px auto;
+            padding: 24px;
+            background: #fff;
+            border: 1px solid #d9e0e7;
+            border-radius: 8px;
+        }
+
+        h1 {
+            margin-top: 0;
+        }
+
+        dl {
+            display: grid;
+            grid-template-columns: 220px 1fr;
+            gap: 12px;
+        }
+
+        dt {
+            font-weight: bold;
+        }
+
+        dd {
+            margin: 0;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            color: #2457a6;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>Student Registration Summary</h1>
+
+        <dl>
+            <dt>Student Name:</dt>
+            <dd>{{ student.student_name }}</dd>
+
+            <dt>Student ID:</dt>
+            <dd>{{ student.student_id }}</dd>
+
+            <dt>Major:</dt>
+            <dd>{{ student.major }}</dd>
+
+            <dt>Class Standing:</dt>
+            <dd>{{ student.class_standing }}</dd>
+
+            <dt>Programming Languages:</dt>
+            <dd>{{ programming_languages }}</dd>
+
+            <dt>Expected Graduation:</dt>
+            <dd>{{ student.graduation_year }}</dd>
+        </dl>
+
+        <a href="{% url 'registration:form' %}">Submit another registration</a>
+    </main>
+</body>
+</html>
