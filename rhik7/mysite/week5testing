@@ -1,0 +1,38 @@
+import unittest
+
+
+def add(a, b):
+    return a + b
+
+
+def subtract(a, b):
+    return a - b
+
+
+class TestCalculator(unittest.TestCase):
+
+    def test_add(self):
+        self.assertEqual(add(2, 3), 5)
+
+    def test_subtract(self):
+        self.assertEqual(subtract(5, 3), 2)
+
+
+if __name__ == "__main__":
+    unittest.main()
+
+
+"""
+Test Results:
+
+The tests were successful because both tests passed without any
+errors or failures. The first test checked that the add function
+correctly adds 2 and 3 together to produce 5. The second test
+checked that the subtract function correctly subtracts 3 from 5
+to produce 2.
+
+When the test results show "OK", it means that all of the tests
+passed and the functions produced the expected results. Unit
+testing helps make sure individual parts of a program are working
+correctly before the program becomes more complicated.
+"""
