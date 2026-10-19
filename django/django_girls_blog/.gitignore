@@ -1,0 +1,27 @@
+# Python
+*.pyc
+*~
+__pycache__/
+
+# Environments and secrets
+.env
+myvenv/
+venv/
+.venv/
+
+# Database
+db.sqlite3
+
+# Static files collected for deployment
+/static/
+
+# Windows
+Thumbs.db*
+ehthumbs*.db
+[Dd]esktop.ini
+$RECYCLE.BIN/
+
+# Editors
+.vscode/
+.history/
+*.code-workspace

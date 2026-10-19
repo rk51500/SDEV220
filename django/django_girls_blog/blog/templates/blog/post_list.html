@@ -1,0 +1,15 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <article class="post">
+            <time class="date" datetime="{{ post.published_date|date:'c' }}">
+                {{ post.published_date }}
+            </time>
+            <h2><a href="">{{ post.title }}</a></h2>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </article>
+    {% empty %}
+        <p>No published posts yet. Add one in <a href="/admin/">Django admin</a>.</p>
+    {% endfor %}
+{% endblock %}
